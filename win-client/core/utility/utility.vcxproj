@@ -102,8 +102,8 @@
       <ModuleDefinitionFile>.\utility.def</ModuleDefinitionFile>
       <AdditionalLibraryDirectories>..\..\3rdParty\lib;$(SolutionDir)\..\lib\$(Configuration)</AdditionalLibraryDirectories>
       <ImportLibrary>$(SolutionDir)..\lib\$(Configuration)\$(TargetName).lib</ImportLibrary>
-      <AdditionalDependencies>sqlite3.lib;network.lib;mfcs120u.lib;MSVCRT.lib;Netapi32.lib</AdditionalDependencies>
-      <IgnoreSpecificDefaultLibraries>MSVCRT.lib;mfcs120u.lib</IgnoreSpecificDefaultLibraries>
+      <AdditionalDependencies>sqlite3.lib;network.lib;mfcs140u.lib;MSVCRT.lib;Netapi32.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>MSVCRT.lib;mfcs140u.lib</IgnoreSpecificDefaultLibraries>
     </Link>
     <Midl>
       <MkTypLibCompatible>false</MkTypLibCompatible>
