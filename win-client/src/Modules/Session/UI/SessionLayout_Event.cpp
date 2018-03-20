@@ -121,11 +121,17 @@ void SessionLayout::Notify(TNotifyUI& msg)
         else if (msg.pSender == m_pBtnScreenShot)
         {
             //直接模拟截屏快捷键
+#ifdef _DEBUG
+			TCHAR szName[MAX_PATH] = _T("TeamTalkMainDialog_debug");
+#else
+			TCHAR szName[MAX_PATH] = _T("TeamTalkMainDialog");
+#endif
             for (HWND hWnd = GetTopWindow(NULL); hWnd != NULL; hWnd = GetWindow(hWnd, GW_HWNDNEXT))
             {
                 wchar_t szWndName[MAX_PATH] = { 0 };
                 GetClassName(hWnd, szWndName, MAX_PATH);
-                if (_wcsicmp(szWndName, L"TeamTalkMainDialog"))
+				
+                if (_wcsicmp(szWndName, szName))
                 {
                     continue;
                 }

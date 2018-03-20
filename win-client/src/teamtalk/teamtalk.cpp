@@ -47,7 +47,7 @@ BOOL CteamtalkApp::InitInstance()
 	}
 	AfxEnableControlContainer();
 
-	if (_IsHaveInstance())
+	/*if (_IsHaveInstance())
 	{
 		LOG__(ERR, _T("Had one instance,this will exit"));
 		HWND hwndMain = FindWindow(_T("TeamTalkMainDialog"), NULL);
@@ -56,7 +56,7 @@ BOOL CteamtalkApp::InitInstance()
 			::SendMessage(hwndMain, WM_START_MOGUTALKINSTANCE, NULL, NULL);
 		}
 		return FALSE;
-	}
+	}*/
 
 	//start imcore lib
 	if (!imcore::IMLibCoreRunEvent())
