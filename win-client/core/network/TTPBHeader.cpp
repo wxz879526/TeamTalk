@@ -23,7 +23,7 @@ TTPBHeader::TTPBHeader()
 
 TTPBHeader::~TTPBHeader()
 {
-	delete m_pHeaderBuff;
+	delete []m_pHeaderBuff;
 	m_pHeaderBuff = 0;
 }
 

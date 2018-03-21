@@ -321,7 +321,16 @@ void MainListLayout::_AddRecentSessionListToUI()
 				sAvatarPath += "gray_default.png";
 				item.avatarPath = util::stringToCString(sAvatarPath);
 				item.nickName = util::stringToCString(sessionId);
-				m_UIRecentConnectedList->AddNode(item, NULL);
+				if (m_UIRecentConnectedList->IsExistSId(sessionEntity.sessionID))
+				{
+					LOG__(DEBG, _T("IsExistSI:%s"), util::stringToCString(sessionEntity.sessionID));
+					m_UIRecentConnectedList->UpdateItemInfo(item);
+				}
+				else
+				{
+					m_UIRecentConnectedList->AddNode(item, NULL);
+				}
+				//m_UIRecentConnectedList->AddNode(item, NULL);
 				UnKnowUserVec.push_back(sessionId);
 			}			
 		}
