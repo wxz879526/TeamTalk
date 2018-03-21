@@ -12,15 +12,15 @@
 
 NAMESPACE_BEGIN(Http)
 
-class	HttpRequest;
-class	HttpResponse;
+class HttpRequest;
+class HttpResponse;
 
 //传输进度回调
 class	IProgressDelegate
 {
 public:
-	virtual	void	dataWriteProgress(int write_length,int total_length) = 0;
-	virtual	void	dataReadProgress(int read_length,int total_length) = 0;
+	virtual	void dataWriteProgress(int write_length,int total_length) = 0;
+	virtual	void dataReadProgress(int read_length,int total_length) = 0;
 	virtual	~IProgressDelegate() {}
 };
 
@@ -28,11 +28,9 @@ public:
 class IAsyncHttpDelegate : public IProgressDelegate
 {
 public:
-	virtual	void	onError(HTTPERROR error_code,const HttpRequest* request,const HttpResponse* resposne) = 0;
-	virtual	void	onSuccess(const HttpRequest* request,const HttpResponse* resposne) = 0;
+	virtual	void onError(HTTPERROR error_code,const HttpRequest* request,const HttpResponse* resposne) = 0;
+	virtual	void onSuccess(const HttpRequest* request,const HttpResponse* resposne) = 0;
 	virtual	~IAsyncHttpDelegate() {}
 };
-
-
 
 NAMESPACE_END(Http)

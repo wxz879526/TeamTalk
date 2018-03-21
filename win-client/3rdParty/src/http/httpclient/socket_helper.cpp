@@ -9,11 +9,11 @@
 #include "socket_helper.h"
 
 
-#pragma   comment(lib,"Wsock32.lib")
+#pragma comment(lib,"Wsock32.lib")
 
 NAMESPACE_BEGIN(SocketHelper)
 
-void	initializeWinSocket()
+void initializeWinSocket()
 {
 	static bool initialization = false;
 	if (!initialization)
@@ -23,7 +23,7 @@ void	initializeWinSocket()
 	}
 }
 
-bool	connectSocket(int volatile& handle,const std::string& remote_host_name, 
+bool connectSocket(int volatile& handle,const std::string& remote_host_name, 
 						int remote_port_number,int timeout_millisecs)
 {
 	struct hostent* const host_ent = gethostbyname (remote_host_name.c_str());
@@ -71,7 +71,7 @@ bool	connectSocket(int volatile& handle,const std::string& remote_host_name,
 	return true;
 }
 
-int		readSocket(int handle,bool connected,char* dest_buffer,int max_read_length,bool block_util_all_arrived)
+int	readSocket(int handle,bool connected,char* dest_buffer,int max_read_length,bool block_util_all_arrived)
 {
 	int bytes_read = 0;
 
@@ -99,12 +99,12 @@ int		readSocket(int handle,bool connected,char* dest_buffer,int max_read_length,
 	return bytes_read;
 }
 
-int		writeSocket(int handle,const char* source_buffer,int max_write_length)
+int	writeSocket(int handle,const char* source_buffer,int max_write_length)
 {
-		return send(handle,source_buffer,max_write_length,0);
+	return send(handle,source_buffer,max_write_length,0);
 }
 
-bool	resetSocketOptions(int handle)
+bool resetSocketOptions(int handle)
 {
 	const int sndBufSize = 65536;
 	const int rcvBufSize = 65536;
@@ -115,7 +115,7 @@ bool	resetSocketOptions(int handle)
 		&& setsockopt (handle, SOL_SOCKET, SO_SNDBUF, (const char*) &sndBufSize, sizeof (sndBufSize)) == 0;
 }
 
-bool	setSocketBlockingState(int handle,bool block)
+bool setSocketBlockingState(int handle,bool block)
 {
 	u_long nonBlocking = block ? 0 : 1;
 
@@ -165,7 +165,7 @@ int waitForReadiness ( int handle, bool for_ready,int timeout_msecs)
 	return 0;
 }
 
-unsigned long	getIntAddress(const char* ip_address)
+unsigned long getIntAddress(const char* ip_address)
 {
 	unsigned long ret = INADDR_NONE;
 	if (ip_address)

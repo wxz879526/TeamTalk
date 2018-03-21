@@ -12,21 +12,21 @@
 
 NAMESPACE_BEGIN(SocketHelper)
 
-void	initializeWinSocket();
+void initializeWinSocket();
 
-bool	connectSocket(int volatile& handle,const std::string& remote_host_name,
+bool connectSocket(int volatile& handle,const std::string& remote_host_name,
 					int remote_port_number,int timeout_millisecs);
 
-int		readSocket(int handle,bool connected,char* dest_buffer,int max_read_length,bool block_util_all_arrived);
+int	readSocket(int handle,bool connected,char* dest_buffer,int max_read_length,bool block_util_all_arrived);
 
-int		writeSocket(int handle,const char* source_buffer,int max_write_length);
+int	writeSocket(int handle,const char* source_buffer,int max_write_length);
 
-bool	resetSocketOptions(int handle);
+bool resetSocketOptions(int handle);
 
-bool	setSocketBlockingState(int handle,bool block);
+bool setSocketBlockingState(int handle,bool block);
 
-int		waitForReadiness (int handle, bool for_ready, int timeout_msecs);
+int	waitForReadiness (int handle, bool for_ready, int timeout_msecs);
 
-unsigned long	getIntAddress(const char* ip_address);
+unsigned long getIntAddress(const char* ip_address);
 
 NAMESPACE_END(SocketHelper)
