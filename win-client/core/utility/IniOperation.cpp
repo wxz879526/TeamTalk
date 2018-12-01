@@ -42,12 +42,12 @@ bool CIniReader::ReadBoolean(LPCTSTR szSection, LPCTSTR szKey, bool bolDefaultVa
 		_tcscmp(szResult, TEXT("true")) == 0) ? true : false;
 	return bolResult;
 }
-CString CIniReader::ReadString(LPCTSTR szSection, LPCTSTR szKey, LPCTSTR szDefaultValue)
+/*CString CIniReader::ReadString(LPCTSTR szSection, LPCTSTR szKey, LPCTSTR szDefaultValue)
 {
 	TCHAR szResult[255] = { 0 };
 	GetPrivateProfileString(szSection, szKey, szDefaultValue, szResult, 255, m_szFileName);
 	return CString(szResult);
-}
+}*/
 
 ////////////////////////////CIniWriter//////////////////////////////////////////////
 

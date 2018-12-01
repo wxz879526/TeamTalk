@@ -1,7 +1,8 @@
 #include "BaseSocket.h"
+#include <WS2tcpip.h>
 #include "EventDispatch.h"
 
-typedef hash_map<net_handle_t, CBaseSocket*> SocketMap;
+typedef unordered_map<net_handle_t, CBaseSocket*> SocketMap;
 SocketMap	g_socket_map;
 
 void AddBaseSocket(CBaseSocket* pSocket)
@@ -283,17 +284,31 @@ void CBaseSocket::_SetAddr(const char* ip, const uint16_t port, sockaddr_in* pAd
 	memset(pAddr, 0, sizeof(sockaddr_in));
 	pAddr->sin_family = AF_INET;
 	pAddr->sin_port = htons(port);
-	pAddr->sin_addr.s_addr = inet_addr(ip);
+	inet_pton(AF_INET, ip, pAddr);
 	if (pAddr->sin_addr.s_addr == INADDR_NONE)
 	{
-		hostent* host = gethostbyname(ip);
-		if (host == NULL)
-		{
+		//hostent* host = gethostbyname(ip);
+		struct addrinfo *result = NULL;
+		struct addrinfo *ptr = NULL;
+		struct addrinfo hints;
+
+		ZeroMemory(&hints, sizeof(hints));
+		hints.ai_family = AF_INET;
+		hints.ai_socktype = SOCK_STREAM;
+		hints.ai_protocol = IPPROTO_TCP;
+
+		int dwRetval = getaddrinfo(ip, 0, &hints, &result);
+		if (dwRetval != 0) {
 			LOGA__(NET, "gethostbyname failed, ip=%s", ip);
 			return;
 		}
-
-		pAddr->sin_addr.s_addr = *(uint32_t*)host->h_addr;
+		else 
+		{
+			for (ptr = result; ptr != NULL; ptr = ptr->ai_next)
+			{
+				pAddr->sin_addr.s_addr = *(uint32_t*)ptr->ai_addr;
+			}
+		}
 	}
 }
 
