@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/">
+        <file>resource/image/minimize.png</file>
+        <file>resource/image/minimize_h.png</file>
+        <file>resource/image/setting.png</file>
+        <file>resource/image/setting_h.png</file>
+        <file>resource/qss/LoginDialog.qss</file>
+        <file>resource/image/close.png</file>
+        <file>resource/image/close_h.png</file>
+        <file>resource/image/card_user.png</file>
+        <file>resource/image/LoginBtnBack.png</file>
+    </qresource>
+</RCC>

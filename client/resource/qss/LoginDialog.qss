@@ -1,0 +1,44 @@
+QWidget#LoginDialog
+{
+	background-color:#FFF7F7F7
+}
+
+QPushButton#settingbtn
+{
+	border-image:url(:/resource/image/setting.png);
+}
+
+QPushButton#settingbtn:hover
+{
+	border-image:url(:/resource/image/setting_h.png);
+}
+
+QPushButton#minbtn
+{
+	border-image:url(:/resource/image/minimize.png);
+}
+
+QPushButton#minbtn:hover
+{
+	border-image:url(:/resource/image/minimize_h.png);
+}
+
+QPushButton#closebtn
+{
+	border-image:url(:/resource/image/close.png);
+}
+
+QPushButton#closebtn:hover
+{
+	border-image:url(:/resource/image/close_h.png);
+}
+
+QLabel#label_logo
+{
+	border-image:url(:/resource/image/card_user.png);
+}
+
+QPushButton#loginbtn
+{
+	border-image:url(:/resource/image/LoginBtnBack.png) 1,1,1,1;
+}
