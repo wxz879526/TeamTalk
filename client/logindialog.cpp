@@ -3,9 +3,10 @@
 #include <QFile>
 #include <QTextStream>
 #include <QDebug>
+#include <QMouseEvent>
 
 LoginDialog::LoginDialog(QWidget *parent) :
-    QWidget(parent),
+    QDialog(parent),
     ui(new Ui::LoginDialog)
 {
     ui->setupUi(this);
@@ -25,4 +26,18 @@ LoginDialog::LoginDialog(QWidget *parent) :
 LoginDialog::~LoginDialog()
 {
     delete ui;
+}
+
+void LoginDialog::mousePressEvent(QMouseEvent *e)
+{
+    m_orgin = e->globalPos()-this->pos();
+}
+
+void LoginDialog::mouseMoveEvent(QMouseEvent *e)
+{
+    if(e->buttons() & Qt::LeftButton)
+     {
+        QPoint move_pos = e->globalPos();
+        this->move(move_pos-m_orgin);
+     }
 }

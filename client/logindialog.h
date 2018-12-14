@@ -1,13 +1,13 @@
 #ifndef LOGINDIALOG_H
 #define LOGINDIALOG_H
 
-#include <QWidget>
+#include <QDialog>
 
 namespace Ui {
 class LoginDialog;
 }
 
-class LoginDialog : public QWidget
+class LoginDialog : public QDialog
 {
     Q_OBJECT
 
@@ -16,7 +16,12 @@ public:
     ~LoginDialog();
 
 private:
+    void mousePressEvent(QMouseEvent *e) override;
+    void mouseMoveEvent(QMouseEvent *e) override;
+
+private:
     Ui::LoginDialog *ui;
+    QPoint m_orgin;
 };
 
 #endif // LOGINDIALOG_H
